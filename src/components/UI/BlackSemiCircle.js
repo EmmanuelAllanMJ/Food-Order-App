@@ -1,5 +1,5 @@
 import React from "react";
-import ReactDOM from "react-dom";
+// import ReactDOM from "react-dom";
 import classes from "./BlackSemiCircle.module.css";
 
 const Circle = () => {
@@ -9,8 +9,8 @@ const Circle = () => {
 function BlackSemiCircle(props) {
   return (
     <React.Fragment>
-          {/* {ReactDOM.createPortal(<Circle />, document.getElementById("bgCircle"))} */}
-          <Circle/>
+      {/* {ReactDOM.createPortal(<Circle />, document.getElementById("bgCircle"))} */}
+      <Circle />
     </React.Fragment>
   );
 }

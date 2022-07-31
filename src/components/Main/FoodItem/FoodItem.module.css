@@ -1,0 +1,59 @@
+.shape {
+  padding: 1rem 0;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 30px;
+  position: relative;
+  transition: all 0.5s;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25);
+}
+.shape:hover {
+  /* background-color: #191610; */
+  transform: translateY(-3px);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25);
+}
+.name,
+.price {
+  margin-bottom: 1rem;
+}
+.img {
+  height: 5rem;
+  width: 5rem;
+  background-color: #eee;
+  padding: 0.5rem;
+  border-radius: 50px;
+}
+
+.name {
+  font-family: Rubik, serif;
+  font-weight: 500;
+  font-size: 1.5rem;
+}
+.price {
+  font-weight: 600;
+  font-size: 1.6rem;
+}
+.dollar {
+  font-size: 0.8rem;
+
+  color: red;
+}
+
+.amount {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: red;
+  color: #fff;
+  padding: 1rem;
+  border-radius: 50px;
+  height: 1rem;
+  width: 1rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
