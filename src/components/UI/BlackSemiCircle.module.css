@@ -1,0 +1,10 @@
+.circle {
+  height: 150vh;
+  width: 150vh;
+  top: -25%;
+  left: 75%;
+  position: absolute;
+  z-index: -1;
+  background-color: rgba(51, 51, 51, 0.945);
+  border-radius: 100%;
+}
