@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
+import CartContent from "../../../store/cart-content";
 import Button from "../../UI/Button";
 import FoodItem from "../FoodItem/FoodItem";
 import classes from "./Order.module.css";
 // import Image from "../../../assets/hamburger.png"
 
 function Order(props) {
+  const cartCtx = useContext(CartContent);
   const foodItem = [
     {
       id: "m1",
@@ -40,6 +42,12 @@ function Order(props) {
     },
   ];
 
+  const addItemToCartHandler = (amount) => {
+    // cartCtx.totalAmount += amount;
+    console.log("first");
+    return;
+  };
+
   return (
     <div className={classes.column}>
       <h2 className={classes.order}>Order your Food</h2>
@@ -47,12 +55,13 @@ function Order(props) {
         Fresh and tasty seafood curry sit amet, consectetur Curabitur accumsan
         auctor pulvinar proin sit amet,
       </p>
-      <p className={classes.amount}>Total Amount: ${props.amount}</p>
+      <p className={classes.amount}>Total Amount: ${cartCtx.totalAmount}</p>
       <Button />
       <div className={classes.items}>
         {foodItem.map((item) => {
           return (
             <FoodItem
+              onClick={addItemToCartHandler(props.price)}
               key={item.id}
               name={item.name}
               price={item.price}

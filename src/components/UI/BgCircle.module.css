@@ -2,6 +2,11 @@
   border-radius: 50px;
   padding: 0.25rem;
   position: relative;
+  transition: all 0.5s;
+}
+.circle:hover,
+.circle:active {
+  transform: translateY(-5px);
 }
 .amount {
   position: absolute;

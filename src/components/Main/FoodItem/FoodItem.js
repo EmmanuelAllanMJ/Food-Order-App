@@ -2,6 +2,9 @@ import React from "react";
 import classes from "./FoodItem.module.css";
 
 function FoodItem(props) {
+  const addItem = (event) => {
+    console.log(event.target.value);
+  };
   return (
     <div className={classes.shape} style={{ backgroundColor: props.color }}>
       <img className={classes.img} src={props.img} alt={props.name} />
