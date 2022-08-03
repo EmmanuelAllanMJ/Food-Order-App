@@ -52,6 +52,9 @@ function Cart(props) {
       <p className={classes.totalAmount}>
         Total Amount :<span>${totalAmount}</span>{" "}
       </p>
+      {props.onError && (
+        <p className={classes.errorMessage}>Add at least one cart item</p>
+      )}
       <button className={classes.order} onClick={props.onOrder}>
         Order
       </button>

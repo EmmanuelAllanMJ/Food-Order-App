@@ -34,9 +34,23 @@ form input {
   border: 1px solid red !important;
   color: #fff;
 }
+
+.order:hover,
+.order:active {
+  border: 1px solid #000;
+  background-color: #fce9a7;
+}
+.close:hover,
+.close:active {
+  border: 1px solid red;
+  background-color: #ff3333;
+  color: #fff;
+}
+
 .amount {
   font-weight: bold;
   font-size: 2.4rem;
+  color: #000;
 }
 .amountAction {
   display: flex;

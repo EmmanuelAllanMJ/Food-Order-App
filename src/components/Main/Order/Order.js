@@ -9,15 +9,28 @@ import classes from "./Order.module.css";
 function Order(props) {
   const [showModal, setShowModal] = useState(false);
   const [showAddress, setShowAddress] = useState(false);
+  const [showError, setShowError] = useState(false);
   const cartCtx = useContext(CartContent);
   const totalAmount = `${cartCtx.totalAmount.toFixed(2)}`;
 
-  const onCloseHandler = () => {
-    setShowModal(!showModal);
+  const onOpenCartHandler = () => {
+    setShowModal(true);
+  };
+  const onCloseCartHandler = () => {
+    setShowModal(false);
+    setShowError(false);
   };
   const onOrderHandler = () => {
-    setShowModal(!showModal);
-    setShowAddress(!showAddress);
+    if (cartCtx.totalAmount === 0) {
+      setShowError(true);
+      return;
+    }
+    setShowModal(false);
+    setShowAddress(true);
+  };
+  const onCloseOrderHandler = () => {
+    setShowAddress(false);
+    setShowModal(true);
   };
 
   return (
@@ -28,11 +41,22 @@ function Order(props) {
         auctor pulvinar proin sit amet,
       </p>
       <p className={classes.amount}>Total Amount: ${totalAmount}</p>
-      {showModal && <Cart onClose={onCloseHandler} onOrder={onOrderHandler} />}
-      {showAddress && (
-        <AddressForm onClose={onCloseHandler} onOrder={onOrderHandler} />
+      {showModal && (
+        <Cart
+          onOpen={onOpenCartHandler}
+          onClose={onCloseCartHandler}
+          onOrder={onOrderHandler}
+          onError={showError}
+        />
       )}
-      <Button onClick={onCloseHandler} />
+      {showAddress && (
+        <AddressForm
+          onOpen={onOpenCartHandler}
+          onOrder={onOrderHandler}
+          onClose={onCloseOrderHandler}
+        />
+      )}
+      <Button onClick={onOpenCartHandler} />
       <div className={classes.items}>
         {cartCtx.items.map((item) => {
           return (
