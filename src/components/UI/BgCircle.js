@@ -6,7 +6,8 @@ function BgCircle(props) {
   return (
     <button
       onClick={props.onClick}
-      className={`${classes.circle} ${classes.bump}`}
+      className={`${classes.circle} ${props.btnIsHighlighted && classes.bump}
+      }`}
       style={{ backgroundColor: props.color }}
     >
       <img src={link} alt="basket" height={props.height} width={props.height} />
