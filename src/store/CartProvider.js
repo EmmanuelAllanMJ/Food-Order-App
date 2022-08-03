@@ -1,8 +1,7 @@
-import React, { useState, useReducer, useEffect } from "react";
+import React, { useState, useReducer } from "react";
 import CartContent from "./cart-content";
-import Food from "./Food";
 
-let defaultCartState = {
+const defaultCartState = {
   items: [
     {
       id: "m1",
@@ -44,7 +43,7 @@ const cartReducer = (state, action) => {
   if (action.type === "ADD") {
     const updatedTotalAmount = state.totalAmount + action.item.price;
     //1.Finding index
-    console.log(Food);
+
     const existingCartItemIndex = state.items.findIndex(
       (item) => item.id === action.item.id
     );
@@ -84,39 +83,7 @@ const cartReducer = (state, action) => {
 };
 
 function CartProvider(props) {
-  const [foodList, setFoodList] = useState();
-  let newFoodList = {
-    items: [],
-    totalAmount: 0,
-  };
-  useEffect(() => {
-    const fetchMeal = async () => {
-      const response = await fetch(
-        "https://react-http-bf01c-default-rtdb.firebaseio.com/foods.json"
-      );
-      const responseData = await response.json();
-      const loadedFood = [];
-      for (const key in responseData) {
-        loadedFood.push({
-          id: key,
-          name: responseData[key].name,
-          price: responseData[key].price,
-          amount: responseData[key].amount,
-          img: responseData[key].img,
-          color: responseData[key].color,
-        });
-      }
-      setFoodList(loadedFood);
-    };
-    fetchMeal();
-  }, []);
-  defaultCartState = {
-    items: foodList,
-    totalAmount: 0,
-  };
-  console.log(newFoodList);
-  console.log(defaultCartState);
-  const [cartState, dispatch] = useReducer(cartReducer, newFoodList);
+  const [cartState, dispatch] = useReducer(cartReducer, defaultCartState);
 
   const addItemToCartHandler = (item) => {
     dispatch({ type: "ADD", item: item });
