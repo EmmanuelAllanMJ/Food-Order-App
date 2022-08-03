@@ -9,6 +9,9 @@ function Cart(props) {
   const addItemHandler = (item) => {
     cartCtx.addItem(item);
   };
+  const removeItemHandler = (id) => {
+    cartCtx.removeItem(id);
+  };
   const cartItems = (
     <li>
       {cartCtx.items.map((item) => {
@@ -29,7 +32,12 @@ function Cart(props) {
                   +
                 </button>
                 <p className={classes.amount}>{item.amount}</p>
-                <button className={classes.add}>-</button>
+                <button
+                  className={classes.add}
+                  onClick={removeItemHandler.bind(null, item.id)}
+                >
+                  -
+                </button>
               </div>
             </div>
           );
@@ -39,10 +47,14 @@ function Cart(props) {
   );
   return (
     <Modal onClose={props.onClose} className={classes.modal}>
+      <h2 className={classes.heading}>Cart Items:</h2>
       <ul className={classes["cart-items"]}>{cartItems}</ul>
       <p className={classes.totalAmount}>
-        Amount :<span>${totalAmount}</span>{" "}
+        Total Amount :<span>${totalAmount}</span>{" "}
       </p>
+      <button className={classes.order} onClick={props.onOrder}>
+        Order
+      </button>
       <button className={classes.close} onClick={props.onClose}>
         Close
       </button>
