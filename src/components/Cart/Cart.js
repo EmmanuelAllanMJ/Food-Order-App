@@ -6,6 +6,9 @@ import classes from "./Cart.module.css";
 function Cart(props) {
   const cartCtx = useContext(CartContent);
   const totalAmount = `${cartCtx.totalAmount.toFixed(2)}`;
+  const addItemHandler = (item) => {
+    cartCtx.addItem(item);
+  };
   const cartItems = (
     <li>
       {cartCtx.items.map((item) => {
@@ -18,7 +21,13 @@ function Cart(props) {
                 {item.price}
               </p>
               <div className={classes.action}>
-                <button className={classes.add}>+</button>
+                <button
+                  className={classes.add}
+                  type="button"
+                  onClick={addItemHandler.bind(null, item)}
+                >
+                  +
+                </button>
                 <p className={classes.amount}>{item.amount}</p>
                 <button className={classes.add}>-</button>
               </div>
