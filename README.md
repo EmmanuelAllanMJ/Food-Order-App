@@ -1,4 +1,4 @@
-#This is a Food Order App built using React
+# This is a Food Order App built using React
 
 This is the home page of the image
 ![image](https://user-images.githubusercontent.com/90669430/182660751-1f5c366b-bcb6-428f-b033-88e0bc049cde.png)
