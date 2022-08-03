@@ -61,8 +61,8 @@ function Order(props) {
         {foodItem.map((item) => {
           return (
             <FoodItem
-              onClick={addItemToCartHandler(props.price)}
               key={item.id}
+              id={item.id}
               name={item.name}
               price={item.price}
               amount={item.amount}
