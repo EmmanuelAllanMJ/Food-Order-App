@@ -1,11 +1,43 @@
-import React from "react";
-import AddressForm from "../Main/Order/AddressForm";
+import React, { useContext } from "react";
+import CartContent from "../../store/cart-content";
+import Modal from "../UI/Modal";
+import classes from "./Cart.module.css";
 
-function Cart() {
+function Cart(props) {
+  const cartCtx = useContext(CartContent);
+  const totalAmount = `${cartCtx.totalAmount.toFixed(2)}`;
+  const cartItems = (
+    <li>
+      {cartCtx.items.map((item) => {
+        if (item.amount !== 0) {
+          return (
+            <div key={item.id} className={classes.cartItem}>
+              <h3 className={classes.name}>{item.name}</h3>
+              <p className={classes.price}>
+                <span>$</span>
+                {item.price}
+              </p>
+              <div className={classes.action}>
+                <button className={classes.add}>+</button>
+                <p className={classes.amount}>{item.amount}</p>
+                <button className={classes.add}>-</button>
+              </div>
+            </div>
+          );
+        }
+      })}
+    </li>
+  );
   return (
-    <AddressForm>
-      <p>Amount</p>
-    </AddressForm>
+    <Modal onClose={props.onClose} className={classes.modal}>
+      <ul className={classes["cart-items"]}>{cartItems}</ul>
+      <p className={classes.totalAmount}>
+        Amount :<span>${totalAmount}</span>{" "}
+      </p>
+      <button className={classes.close} onClick={props.onClose}>
+        Close
+      </button>
+    </Modal>
   );
 }
 

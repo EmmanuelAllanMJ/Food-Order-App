@@ -42,6 +42,8 @@ function Order(props) {
     },
   ];
 
+  const totalAmount = `${cartCtx.totalAmount.toFixed(2)}`;
+
   const addItemToCartHandler = (amount) => {
     // cartCtx.totalAmount += amount;
     console.log("first");
@@ -55,10 +57,10 @@ function Order(props) {
         Fresh and tasty seafood curry sit amet, consectetur Curabitur accumsan
         auctor pulvinar proin sit amet,
       </p>
-      <p className={classes.amount}>Total Amount: ${cartCtx.totalAmount}</p>
+      <p className={classes.amount}>Total Amount: ${totalAmount}</p>
       <Button />
       <div className={classes.items}>
-        {foodItem.map((item) => {
+        {cartCtx.items.map((item) => {
           return (
             <FoodItem
               key={item.id}

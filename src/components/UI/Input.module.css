@@ -1,0 +1,19 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 2.4rem 3.6rem;
+  width: 100%;
+}
+form label {
+  font-weight: bold;
+  font-size: 2rem;
+}
+form input {
+  /* font-family: inherit;
+  font-size: inherit; */
+  padding: 0.25rem;
+  font-size: 1.6rem;
+  margin-top: -1rem;
+  border: 1px solid #777;
+}

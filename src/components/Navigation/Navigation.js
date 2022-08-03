@@ -4,6 +4,7 @@ import classes from "./Navigation.module.css";
 import basket from "../../assets/basket.png";
 import AddressForm from "../Main/Order/AddressForm";
 import CartContent from "../../store/cart-content";
+import Cart from "../Cart/Cart";
 
 function Navigation(props) {
   const [showModal, setShowModal] = useState(false);
@@ -18,7 +19,8 @@ function Navigation(props) {
   }, 0);
   return (
     <Fragment>
-      {showModal && <AddressForm onClose={showModalHandler} />}
+      {/* {showModal && <AddressForm onClose={showModalHandler} />} */}
+      {showModal && <Cart onClose={showModalHandler} />}
       <nav className={`${classes.nav} ${classes.container}`}>
         <div className={classes.imgName}>
           <img

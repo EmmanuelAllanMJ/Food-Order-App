@@ -12,19 +12,6 @@ function AddressForm(props) {
     console.log({ name: enteredName, phone: enteredNumber });
   };
 
-  const FormDiv = () => {
-    <form onSubmit={submitHandler} className={classes.form}>
-      <label htmlFor="name">Name</label>
-      <input type="text" ref={nameInputRef} id="name" />
-      <label htmlFor="phone">Name</label>
-      <input type="number" ref={numberInputRef} id="name" />
-      <div className={classes.actions}>
-        <button>Close</button>
-        <button>Order</button>
-      </div>
-    </form>;
-  };
-
   return (
     <Modal onClose={props.onClose}>
       <form onSubmit={submitHandler} className={classes.form}>
