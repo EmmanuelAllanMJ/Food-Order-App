@@ -1,8 +1,9 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useContext, useState } from "react";
 import BgCircle from "../UI/BgCircle";
 import classes from "./Navigation.module.css";
 import basket from "../../assets/basket.png";
 import AddressForm from "../Main/Order/AddressForm";
+import CartContent from "../../store/cart-content";
 
 function Navigation(props) {
   const [showModal, setShowModal] = useState(false);
@@ -10,6 +11,11 @@ function Navigation(props) {
   const showModalHandler = (props) => {
     setShowModal(!showModal);
   };
+
+  const cartCtx = useContext(CartContent);
+  const numberOfCartItems = cartCtx.items.reduce((curNumber, item) => {
+    return curNumber + item.amount;
+  }, 0);
   return (
     <Fragment>
       {showModal && <AddressForm onClose={showModalHandler} />}
@@ -28,7 +34,7 @@ function Navigation(props) {
           className={classes.cart}
           height="36"
           link={basket}
-          amount="1"
+          amount={numberOfCartItems}
           color="#fedda3"
         />
       </nav>
